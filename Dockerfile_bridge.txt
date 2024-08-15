@@ -1,4 +1,4 @@
-FROM olagh/ros-noetic-humble-arm
+FROM olagh/ros-noetic-humble-arm:fix_permission
 SHELL ["/bin/bash", "-c"]
 
 # ros1_bridge

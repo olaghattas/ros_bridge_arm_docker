@@ -2,12 +2,15 @@ version: '3'
 services:
     bridge-noetic-humble:
         privileged: true
-        image: "olagh/ros_bridge_docker:latest"
+        image: "olagh/ros_bridge_docker:fix_permission"
         network_mode: host
         environment:
             - PULSE_SERVER=tcp:host.docker.internal:4713
-            - ROS_MASTER_URI=http://$ROS_IP:11311
+            # change to limo IP
+            - ROS_MASTER_URI=http://192.168.1.2:11311
+            # change to limo IP
             - ROS_IP=192.168.1.2
+            # same as your ros2 computer
             - ROS_DOMAIN_ID=25
             - DISPLAY=:0
             - FASTRTPS_DEFAULT_PROFILES_FILE=/profile/fastrtps_default_profiles.xml
@@ -15,4 +18,4 @@ services:
             - /tmp/.X11-unix/:/tmp/.X11-unix/
             - ./profile:/profile
         #tty: true
-	command: ros2 run ros1_bridge dynamic_bridge
+        command: ros2 run ros1_bridge dynamic_bridge

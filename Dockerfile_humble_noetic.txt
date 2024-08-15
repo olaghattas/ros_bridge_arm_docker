@@ -70,6 +70,7 @@ RUN rosdep install -y -r -q --from-paths src --ignore-src --rosdistro humble
 WORKDIR /root/ros2_humble/
 RUN /root/ros2_humble/install/setup.bash & colcon build --symlink-install --cmake-args -DBUILD_TESTING=OFF
 
+WORKDIR /root/ros2_humble/
 # setup entrypoint
 COPY ./ros_entrypoint.sh /
 
